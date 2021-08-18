@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
           "memory": var.memory_mb,
           "image": var.docker_image_uri,
           "essential": var.essential,
-          "name": var.name
+          "name": var.ecs_task_name
       },
   ])
 
