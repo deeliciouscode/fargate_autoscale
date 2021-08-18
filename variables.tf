@@ -60,7 +60,11 @@ variable "assign_public_ip" {
     default = false
 }
 
-variable "ecs_target_group" {}
+variable "lb_ecs_target_group_arn" {}
+
+variable "lb_container_name" {}
+
+variable "lb_container_port" {}
 
 ########### AUTOSCALING ###########
 
