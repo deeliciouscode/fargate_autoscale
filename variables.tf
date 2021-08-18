@@ -38,7 +38,7 @@ variable "essential" {
     default = true
 }
 
-variable "name" {}
+variable "ecs_task_name" {}
 
 variable "network_mode" {
     default = "awsvpc"
