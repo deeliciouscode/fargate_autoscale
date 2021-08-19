@@ -75,8 +75,8 @@ module "auto_scaling" {
   source = "./autoscaling"
   autoscaling_max_capa = var.autoscaling_max_capa
   autoscaling_min_capa = var.autoscaling_min_capa
-  ecs_cluster = var.ecs_cluster
-  ecs_service = var.ecs_service
+  ecs_cluster = aws_ecs_cluster.ecs_cluster
+  ecs_service = aws_ecs_service.ecs_service
   service_namespace = var.service_namespace
   memory_scaling_name = var.memory_scaling_name
   memory_scaling_policy_type = var.memory_scaling_policy_type
