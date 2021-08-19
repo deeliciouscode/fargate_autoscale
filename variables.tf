@@ -99,3 +99,5 @@ variable "cpu_scaling_policy_type" {
 variable "cpu_target_value" {
     default = 80
 }
+
+variable "elb_arn" {}

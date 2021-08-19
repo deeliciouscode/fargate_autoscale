@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "ecs_service_elb" {
     ]
 
     resources = [
-      var.elb.arn
+      var.elb_arn
     ]
   }
 }
