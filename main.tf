@@ -70,7 +70,7 @@ resource "aws_ecs_service" "ecs_service" {
 }
 
 module "auto_scaling" {
-  source = "./modules/auto-scaling"
+  source = "./auto-scaling"
   autoscaling_max_capa = var.autoscaling_max_capa
   autoscaling_min_capa = var.autoscaling_min_capa
   ecs_cluster = var.ecs_cluster
