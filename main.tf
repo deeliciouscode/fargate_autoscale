@@ -14,22 +14,22 @@ resource "aws_ecs_task_definition" "ecs_task" {
   family = var.ecs_task_family
   container_definitions = jsonencode([
       {
-          "portMappings": [
-            "hostPort": var.port_mapping_host_port,
-            "protocol": var.port_mapping_protocol,
-            "containerPort": var.port_mapping_container_port
+          portMappings: [
+            hostPort: var.port_mapping_host_port,
+            protocol: var.port_mapping_protocol,
+            containerPort: var.port_mapping_container_port
           ],
-          "cpu": var.cpu_units,
-          "environment": [
+          cpu: var.cpu_units,
+          environment: [
               {
-                "name": "AUTHOR",
-                "value": var.author_name
+                name: "AUTHOR",
+                value: var.author_name
               }
           ],
-          "memory": var.memory_mb,
-          "image": var.docker_image_uri,
-          "essential": var.essential,
-          "name": var.ecs_task_name
+          memory: var.memory_mb,
+          image: var.docker_image_uri,
+          essential: var.essential,
+          name: var.ecs_task_name
       },
   ])
 
