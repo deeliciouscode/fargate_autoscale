@@ -1,5 +1,7 @@
 ########### FARGATE ###########
 
+variable "name_prefix" {}
+
 variable "name_ecs_cluster" {}
 
 variable "capacity_providers" {

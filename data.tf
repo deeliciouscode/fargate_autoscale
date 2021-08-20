@@ -106,7 +106,7 @@ data "aws_iam_policy_document" "ecs_service_scaling" {
 }
 
 resource "aws_iam_policy" "ecs_service_elb" {
-  name = "dev-to-elb"
+  name = "${var.name_prefix}_ecs_service_elb_policy"
   path = "/"
   description = "Allow access to the service elb"
 
@@ -114,7 +114,7 @@ resource "aws_iam_policy" "ecs_service_elb" {
 }
 
 resource "aws_iam_policy" "ecs_service_standard" {
-  name = "dev-to-standard"
+  name = "${var.name_prefix}_ecs_service_standard_policy"
   path = "/"
   description = "Allow standard ecs actions"
 
@@ -122,7 +122,7 @@ resource "aws_iam_policy" "ecs_service_standard" {
 }
 
 resource "aws_iam_policy" "ecs_service_scaling" {
-  name = "dev-to-scaling"
+  name = "${var.name_prefix}_ecs_service_scaling_policy"
   path = "/"
   description = "Allow ecs service scaling"
 
