@@ -40,8 +40,8 @@ resource "aws_ecs_task_definition" "ecs_task" {
     "FARGATE"]
   memory = "1024"
   cpu = "512"
-  execution_role_arn = var.ecs_role_arn
-  task_role_arn = var.ecs_role_arn
+  execution_role_arn = aws_iam_role.ecs_service.arn
+  task_role_arn = aws_iam_role.ecs_service.arn
 
   tags = var.tags
 }

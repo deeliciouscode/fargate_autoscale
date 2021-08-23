@@ -46,8 +46,6 @@ variable "network_mode" {
     default = "awsvpc"
 }
 
-variable "ecs_role_arn" {}
-
 variable "name_ecs_service" {}
 
 variable "platform_version" {
