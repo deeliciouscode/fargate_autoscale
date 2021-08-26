@@ -47,6 +47,25 @@ data "aws_iam_policy_document" "ecs_service_elb" {
   }
 }
 
+data "aws_iam_policy_document" "ecs_ecr_access" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ecr:GetAuthorizationToken",
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:BatchGetImage",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+
+    resources = [
+      "*"
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "ecs_service_standard" {
 
   statement {
@@ -113,6 +132,14 @@ resource "aws_iam_policy" "ecs_service_elb" {
   policy = data.aws_iam_policy_document.ecs_service_elb.json
 }
 
+resource "aws_iam_policy" "ecs_ecr_access" {
+  name = "${var.name_prefix}_ecs_ecr_access_policy"
+  path = "/"
+  description = "Allow access to ECR from ECS"
+
+  policy = data.aws_iam_policy_document.ecs_ecr_access.json
+}
+
 resource "aws_iam_policy" "ecs_service_standard" {
   name = "${var.name_prefix}_ecs_service_standard_policy"
   path = "/"
@@ -132,6 +159,11 @@ resource "aws_iam_policy" "ecs_service_scaling" {
 resource "aws_iam_role_policy_attachment" "ecs_service_elb" {
   role = aws_iam_role.ecs_service.name
   policy_arn = aws_iam_policy.ecs_service_elb.arn
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_ecr_access" {
+  role = aws_iam_role.ecs_service.name
+  policy_arn = aws_iam_policy.ecs_ecr_access.arn
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_service_standard" {
