@@ -27,6 +27,10 @@ resource "aws_ecs_task_definition" "ecs_task" {
                 "name" = "AUTHOR",
                 "value" = var.author_name,
               },
+              {
+                "name" = "DB_HOST_PROD",
+                "value" = var.db_host_url
+              }
           ],
           "memory" = var.memory_mb,
           "image" = var.docker_image_uri,
