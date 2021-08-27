@@ -65,18 +65,11 @@ data "aws_iam_policy_document" "ecs_ecr_access" {
     ]
   }
 
-  statement {
-    sid = "AccessToSpecificBucketOnly"
-    
+  statement {    
     effect = "Allow"
-    
-    principals {
-      type = "*"
-      identifiers = ["*"]
-    }
 
     actions = [
-      "s3:GetObject"
+      "s3:*"
     ]
 
     resources = [
@@ -84,6 +77,20 @@ data "aws_iam_policy_document" "ecs_ecr_access" {
     ]
   }
 }
+
+# {
+#   "Statement": [
+#     {
+#       "Sid": "Access-to-specific-bucket-only",
+#       "Principal": "*",
+#       "Action": [
+#         "s3:GetObject"
+#       ],
+#       "Effect": "Allow",
+#       "Resource": []
+#     }
+#   ]
+# }
 
 data "aws_iam_policy_document" "ecs_service_standard" {
 
