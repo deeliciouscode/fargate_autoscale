@@ -22,16 +22,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
               },
           ],
           "cpu" = var.cpu_units,
-          "environment" = [
-              {
-                "name" = "AUTHOR",
-                "value" = var.author_name,
-              },
-              {
-                "name" = "DB_HOST_PROD",
-                "value" = var.db_host_url
-              }
-          ],
+          "environment" = var.environment_vars,
           "memory" = var.memory_mb,
           "image" = var.docker_image_uri,
           "essential" = var.essential,

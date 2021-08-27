@@ -28,8 +28,6 @@ variable "cpu_units" {
     default = 256
 }
 
-variable "author_name" {}
-
 variable "memory_mb" {
     default = 512
 }
@@ -104,4 +102,6 @@ variable "elb_arn" {}
 
 variable "region" {}
 
-variable "db_host_url" {}
+variable "environment_vars" {
+    type = list(map(string))
+}
