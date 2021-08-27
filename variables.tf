@@ -101,3 +101,5 @@ variable "cpu_target_value" {
 }
 
 variable "elb_arn" {}
+
+variable "region" {}

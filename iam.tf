@@ -64,6 +64,25 @@ data "aws_iam_policy_document" "ecs_ecr_access" {
       "*"
     ]
   }
+
+  statement {
+    sid = "Access-to-specific-bucket-only"
+    
+    effect = "Allow"
+    
+    principals {
+      type = "*"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject"
+    ]
+
+    resources = [
+      "arn:aws:s3:::prod-${var.region}-starport-layer-bucket/*"
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "ecs_service_standard" {
