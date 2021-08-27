@@ -66,7 +66,7 @@ data "aws_iam_policy_document" "ecs_ecr_access" {
   }
 
   statement {
-    sid = "Access-to-specific-bucket-only"
+    sid = "AccessToSpecificBucketOnly"
     
     effect = "Allow"
     
