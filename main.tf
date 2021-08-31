@@ -21,6 +21,14 @@ resource "aws_ecs_task_definition" "ecs_task" {
                 "containerPort" = var.port_mapping_container_port,
               },
           ],
+          "logConfiguration": {
+             "logDriver": "awslogs",
+             "options": {
+                "awslogs-group": var.log_group,
+                "awslogs-region": var.region,
+                "awslogs-stream-prefix": var.log_prefix
+              },
+          },
           "cpu" = var.cpu_units,
           "environment" = var.environment_vars,
           "memory" = var.memory_mb,
@@ -40,6 +48,15 @@ resource "aws_ecs_task_definition" "ecs_task" {
 
   tags = var.tags
 }
+
+# "logConfiguration": {
+#                 "logDriver": "awslogs",
+#                 "options": {
+#                     "awslogs-group": "awslogs-wordpress",
+#                     "awslogs-region": "us-west-2",
+#                     "awslogs-stream-prefix": "awslogs-example"
+#                 }
+#             },
 
 resource "aws_ecs_service" "ecs_service" {
   name = var.name_ecs_service

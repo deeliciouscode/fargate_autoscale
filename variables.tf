@@ -105,3 +105,7 @@ variable "region" {}
 variable "environment_vars" {
     type = list(map(string))
 }
+
+variable "log_group" {}
+
+variable "log_prefix" {}
