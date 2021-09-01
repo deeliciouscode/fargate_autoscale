@@ -109,3 +109,5 @@ variable "environment_vars" {
 variable "log_group" {}
 
 variable "log_prefix" {}
+
+variable "auto_create_log_group" {}
