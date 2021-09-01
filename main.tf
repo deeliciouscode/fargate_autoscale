@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
                 "awslogs-group": var.log_group,
                 "awslogs-region": var.region,
                 "awslogs-stream-prefix": var.log_prefix,
-                "auto_create_group": var.auto_create_log_group
+                "awslogs-create-group": var.auto_create_log_group
               },
           },
           "cpu" = var.cpu_units,
