@@ -46,6 +46,8 @@ variable "network_mode" {
 
 variable "name_ecs_service" {}
 
+variable "iam_role_name" {}
+
 variable "platform_version" {
     default = "LATEST"
 }
